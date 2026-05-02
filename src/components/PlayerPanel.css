@@ -1,0 +1,96 @@
+.player-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0.5rem;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+/* ─── SCORE BOX ───────────────────────────────── */
+.score-card {
+  /* flex set via inline style from settings */
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255,255,255,0.75);
+  border-radius: 10px;
+  box-shadow:
+    4px 4px 0 rgba(255,255,255,0.22),
+    8px 8px 0 rgba(255,255,255,0.09),
+    0 8px 24px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  min-height: 0;
+  /* ── background comes from CSS variable (same for all boxes by default) */
+  background: var(--box-bg, #0e1e38);
+}
+
+/* Player B score box: gets its own bg via inline style from Scoreboard */
+
+.score-value {
+  font-size: calc(clamp(3.5rem, 13vw, 13rem) * var(--score-scale, 1));
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.score-card.yellow .score-value {
+  color: #1a1000;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ─── STAT BOXES (EYS, AVG) ───────────────────── */
+.eys-row {
+  display: flex;
+  gap: 0.35rem;
+  min-height: 0;
+  /* flex set via inline style from settings */
+}
+
+.stat-card {
+  flex: 1;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 7px;
+  box-shadow:
+    2px 2px 0 rgba(255,255,255,0.18),
+    4px 4px 0 rgba(255,255,255,0.07),
+    0 4px 10px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.07);
+  background: var(--box-bg, #0e1e38);
+  padding: 0.2rem 0.4rem;
+  text-align: center;
+}
+
+.avg-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.6rem;
+  text-align: left;
+  min-height: 0;
+  /* flex set via inline style from settings */
+}
+
+.stat-label {
+  font-size: calc(0.58rem * var(--stat-scale, 1));
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  display: block;
+  color: #ffffff;
+}
+
+.stat-val {
+  font-size: calc(clamp(1rem, 2.3vw, 1.9rem) * var(--stat-scale, 1));
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.avg-val {
+  font-size: calc(clamp(1.1rem, 2.5vw, 2rem) * var(--stat-scale, 1));
+  font-weight: 800;
+  color: #ffffff;
+}

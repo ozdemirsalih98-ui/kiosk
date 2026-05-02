@@ -1,0 +1,106 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-box {
+  background: #0d1e38;
+  border: 2px solid #2a6acc;
+  border-radius: 16px;
+  padding: 2.5rem 3.5rem;
+  text-align: center;
+  min-width: 420px;
+  box-shadow: 0 0 60px rgba(42,106,204,0.3);
+}
+
+.modal-title {
+  font-size: 0.85rem;
+  opacity: 0.5;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.modal-winner {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+  letter-spacing: 0.05em;
+}
+
+.modal-winner.white { color: #ffffff; }
+.modal-winner.yellow { color: #ffd700; }
+.modal-winner.draw { color: #aaaaaa; }
+
+.modal-stats {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-player-stat {
+  text-align: center;
+}
+
+.modal-player-name {
+  font-size: 0.8rem;
+  opacity: 0.55;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.4rem;
+}
+
+.modal-score {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.modal-score.white { color: #ffffff; }
+.modal-score.yellow { color: #ffd700; }
+
+.modal-avg {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 0.3rem;
+}
+
+.modal-vs {
+  font-size: 1.2rem;
+  opacity: 0.35;
+  font-weight: 700;
+}
+
+.modal-inning {
+  font-size: 0.85rem;
+  opacity: 0.4;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+}
+
+.btn-new-match {
+  background: #005522;
+  border: 2px solid #00aa44;
+  color: white;
+  padding: 0.8rem 2.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  transition: all 0.12s;
+}
+
+.btn-new-match:hover {
+  filter: brightness(1.3);
+  transform: scale(1.03);
+}
+
+.btn-new-match:active {
+  transform: scale(0.97);
+}

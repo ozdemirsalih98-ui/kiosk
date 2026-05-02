@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="80" fill="#0a1628"/>
+  <rect x="60" y="60" width="392" height="392" rx="24" fill="#1a5c2a"/>
+  <rect x="90" y="90" width="332" height="332" rx="12" fill="#1e6e30"/>
+  <!-- white ball -->
+  <circle cx="180" cy="256" r="54" fill="#f0f0f0"/>
+  <circle cx="168" cy="244" r="16" fill="white" opacity="0.7"/>
+  <!-- yellow ball -->
+  <circle cx="332" cy="256" r="54" fill="#e6c800"/>
+  <circle cx="320" cy="244" r="16" fill="white" opacity="0.5"/>
+  <!-- red ball -->
+  <circle cx="256" cy="180" r="38" fill="#cc2200"/>
+  <circle cx="247" cy="172" r="11" fill="white" opacity="0.5"/>
+</svg>
