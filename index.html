@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a1628" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Bilardo Sayaç</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══ SETTINGS PAGE ═══════════════════════════════════════════════ -->
+<div id="page-settings" class="settings-page" style="display:none">
+  <div class="settings-title">⚙ Ayarlar</div>
+  <div class="settings-form">
+
+    <div class="setting-item">
+      <label class="setting-label">Geri Sayım Süresi (saniye)</label>
+      <input id="s-countdown" class="setting-input" type="number" min="10" max="120" />
+    </div>
+
+    <div class="setting-item">
+      <label class="setting-label">Isınma Süresi (dakika)</label>
+      <input id="s-warmup" class="setting-input" type="number" min="1" max="60" />
+    </div>
+
+    <div class="setting-item">
+      <label class="setting-label">Time-Out Hakkı</label>
+      <select id="s-timeouts" class="setting-input">
+        <option value="2">2 hak</option>
+        <option value="3">3 hak</option>
+        <option value="4">4 hak</option>
+        <option value="5">5 hak</option>
+      </select>
+    </div>
+
+    <div class="setting-item setting-toggle">
+      <label class="setting-label">Otomatik Süre Başlatma</label>
+      <div class="toggle-desc">
+        Açık: el geçişinde süre otomatik başlar. +1 basınca durur, ayarlanan süre sonra yeniden başlar.
+      </div>
+      <label class="toggle-switch">
+        <input id="s-autotimer" type="checkbox" />
+        <span class="toggle-slider"></span>
+        <span id="s-autotimer-label" class="toggle-label">KAPALI</span>
+      </label>
+    </div>
+
+    <div class="setting-item">
+      <label class="setting-label">Otomatik Başlatma Gecikmesi (saniye)</label>
+      <input id="s-autodelay" class="setting-input" type="number" min="1" max="10" />
+    </div>
+
+  </div>
+  <div class="settings-actions">
+    <button id="btn-settings-cancel" class="btn-back">İptal</button>
+    <button id="btn-settings-save" class="btn-save">Kaydet</button>
+  </div>
+</div>
+
+<!-- ═══ SCOREBOARD PAGE ═════════════════════════════════════════════ -->
+<div id="page-scoreboard" class="scoreboard">
+
+  <!-- HEADER -->
+  <header class="sb-header">
+    <div id="header-a" class="sb-header-a"><span id="name-white" class="header-name">PLAYER A</span></div>
+    <div id="header-b" class="sb-header-b"><span id="name-yellow" class="header-name">PLAYER B</span></div>
+  </header>
+
+  <!-- MAIN -->
+  <div class="sb-main">
+
+    <!-- PLAYER A (white) -->
+    <div id="col-white" class="sb-col">
+      <div class="player-col white">
+        <div id="score-card-white" class="score-card white" style="flex: 8 1 0">
+          <div id="timeouts-white" class="sc-timeouts sc-left"></div>
+          <div id="ball-white" class="sc-ball white sc-right"></div>
+          <span id="score-white" class="score-value d1">0</span>
+          <div class="sc-eys-bottom sc-eys-bl">
+            <span class="sc-eys-label">HR1</span>
+            <span id="eys1-white" class="sc-eys-val">—</span>
+          </div>
+          <div class="sc-eys-bottom sc-eys-br">
+            <span class="sc-eys-label">HR2</span>
+            <span id="eys2-white" class="sc-eys-val">—</span>
+          </div>
+        </div>
+        <div class="stat-row white">
+          <div class="stat-avg">
+            <span class="stat-label">AVG</span>
+            <span id="avg-white" class="avg-val">0.000</span>
+          </div>
+          <div class="stat-inning">
+            <span class="stat-label">INNING</span>
+            <span id="inning-white" class="stat-val">1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div id="col-center" class="sb-col-center">
+      <div class="center-panel">
+        <div id="controls-frame" class="controls-frame" style="flex: 8 1 0">
+          <button id="btn-nav-toggle" class="btn-nav-toggle">◀▶ YÖN: PASİF</button>
+          <button id="btn-countdown" class="btn-countdown">▶ SÜRE BAŞLAT</button>
+          <div class="dpad">
+            <div class="dpad-row">
+              <button id="btn-redo" class="dpad-btn up" disabled>↑</button>
+            </div>
+            <div class="dpad-row">
+              <button id="btn-left" class="dpad-btn left">←</button>
+              <button id="btn-ok" class="dpad-btn center">OK</button>
+              <button id="btn-right" class="dpad-btn right">→</button>
+            </div>
+            <div class="dpad-row">
+              <button id="btn-undo" class="dpad-btn down" disabled>↓</button>
+            </div>
+          </div>
+          <button id="btn-warmup" class="btn-warmup">ISINMA BAŞLAT</button>
+          <div class="center-sub-btns">
+            <button id="btn-end-match" class="btn-end-match">MAÇ BİTİR</button>
+            <button id="btn-settings-open" class="btn-settings">⚙</button>
+          </div>
+        </div>
+        <div class="center-box run-box" style="flex: 3.2 1 0">
+          <div class="center-box-label">RUN</div>
+          <div id="run-val" class="center-box-value run-val white">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLAYER B (yellow) -->
+    <div id="col-yellow" class="sb-col">
+      <div class="player-col yellow">
+        <div id="score-card-yellow" class="score-card yellow" style="flex: 8 1 0; background: #c8940a">
+          <div id="timeouts-yellow" class="sc-timeouts sc-right"></div>
+          <div id="ball-yellow" class="sc-ball yellow sc-left"></div>
+          <span id="score-yellow" class="score-value d1">0</span>
+          <div class="sc-eys-bottom sc-eys-bl">
+            <span class="sc-eys-label">HR1</span>
+            <span id="eys1-yellow" class="sc-eys-val">—</span>
+          </div>
+          <div class="sc-eys-bottom sc-eys-br">
+            <span class="sc-eys-label">HR2</span>
+            <span id="eys2-yellow" class="sc-eys-val">—</span>
+          </div>
+        </div>
+        <div class="stat-row yellow">
+          <div class="stat-inning">
+            <span class="stat-label">INNING</span>
+            <span id="inning-yellow" class="stat-val">1</span>
+          </div>
+          <div class="stat-avg">
+            <span class="stat-label">AVG</span>
+            <span id="avg-yellow" class="avg-val">0.000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sb-main -->
+
+  <!-- INNING STRIP -->
+  <div class="sb-strip">
+    <div id="inning-strip" class="inning-strip">
+      <div class="strip-empty">— henüz ıstaka yok —</div>
+    </div>
+  </div>
+
+  <!-- COUNTDOWN BAR -->
+  <div class="sb-countdown">
+    <div id="countdown-bar" class="countdown-bar">
+      <div id="countdown-segments" class="countdown-segments"></div>
+    </div>
+  </div>
+
+</div><!-- /scoreboard -->
+
+<!-- ═══ PLAYER SELECT MODAL ══════════════════════════════════════════ -->
+<div id="modal-player-select" class="modal-overlay" style="display:none">
+  <div class="modal-box player-modal-box">
+    <div id="player-modal-title" class="modal-title">OYUNCU SEÇ</div>
+    <div class="player-list-header">
+      <span class="plh-name">OYUNCU</span>
+      <span class="plh-stat">GNL AVG</span>
+      <span class="plh-stat">E.Y. AVG</span>
+      <span class="plh-stat">HR1</span>
+      <span class="plh-stat">HR2</span>
+      <span class="plh-stat">PUAN</span>
+    </div>
+    <div id="player-list" class="player-list">
+      <div class="player-list-loading">Yükleniyor…</div>
+    </div>
+    <div class="player-modal-hint">↑↓ Gezin &nbsp;|&nbsp; OK Seç &nbsp;|&nbsp; ← İptal</div>
+  </div>
+</div>
+
+<!-- ═══ CONFIRM END MODAL ════════════════════════════════════════════ -->
+<div id="modal-confirm-end" class="modal-overlay" style="display:none">
+  <div class="modal-box confirm-box">
+    <div class="modal-title">MAÇ BİTİR</div>
+    <div class="confirm-message">Maçı bitirmek istediğinize emin misiniz?</div>
+    <div class="confirm-buttons">
+      <button id="btn-confirm-no"  class="btn-confirm btn-confirm-no">HAYIR</button>
+      <button id="btn-confirm-yes" class="btn-confirm btn-confirm-yes">EVET</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MATCH END MODAL ══════════════════════════════════════════════ -->
+<div id="modal-match-end" class="modal-overlay" style="display:none">
+  <div class="modal-box">
+    <div class="modal-title">MAÇ SONU</div>
+    <div id="modal-winner" class="modal-winner white"></div>
+    <div class="modal-stats">
+      <div class="modal-player-stat">
+        <div class="modal-player-name">PLAYER A</div>
+        <div id="modal-score-white" class="modal-score white">0</div>
+        <div id="modal-avg-white" class="modal-avg">AVG 0.000</div>
+      </div>
+      <div class="modal-vs">VS</div>
+      <div class="modal-player-stat">
+        <div class="modal-player-name">PLAYER B</div>
+        <div id="modal-score-yellow" class="modal-score yellow">0</div>
+        <div id="modal-avg-yellow" class="modal-avg">AVG 0.000</div>
+      </div>
+    </div>
+    <div id="modal-inning-count" class="modal-inning"></div>
+    <button id="btn-new-match" class="btn-new-match">YENİ MAÇ</button>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
